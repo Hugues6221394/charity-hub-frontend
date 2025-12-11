@@ -1,0 +1,85 @@
+// This file contains the updated routes section for App.jsx
+// Replace lines 120-204 in App.jsx with this content
+
+            {/* Student Application Route (outside layout) */}
+            <Route
+              path="/student/application"
+              element={
+                <ProtectedRoute allowedRoles={['Student']}>
+                  <StudentApplicationPage />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Manager Routes with Layout */}
+            <Route
+              path="/manager"
+              element={
+                <ProtectedRoute allowedRoles={['Manager']}>
+                  <ManagerLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route path="dashboard" element={<ManagerDashboard />} />
+              <Route path="applications" element={<ManagerApplications />} />
+              <Route path="reports" element={<ManagerDashboard />} />
+              <Route path="messages" element={<MessagesPage />} />
+              <Route path="notifications" element={<NotificationsPage />} />
+              <Route path="settings" element={<ProfileSettings />} />
+            </Route>
+
+            {/* Student Routes with Layout */}
+            <Route
+              path="/student"
+              element={
+                <ProtectedRoute allowedRoles={['Student']}>
+                  <StudentLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route path="dashboard" element={<StudentDashboard />} />
+              <Route path="progress" element={<ProgressTracking />} />
+              <Route path="donors" element={<StudentDonors />} />
+              <Route path="messages" element={<MessagesPage />} />
+              <Route path="notifications" element={<NotificationsPage />} />
+              <Route path="settings" element={<ProfileSettings />} />
+            </Route>
+
+            {/* Donor Routes with Layout */}
+            <Route
+              path="/donor"
+              element={
+                <ProtectedRoute allowedRoles={['Donor']}>
+                  <DonorLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route path="dashboard" element={<DonorDashboard />} />
+              <Route path="students" element={<DonorDashboard />} />
+              <Route path="donations" element={<DonorDashboard />} />
+              <Route path="messages" element={<MessagesPage />} />
+              <Route path="notifications" element={<NotificationsPage />} />
+              <Route path="settings" element={<ProfileSettings />} />
+            </Route>
+
+            {/* Admin Routes */}
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute allowedRoles={['Admin']}>
+                  <AdminLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route path="dashboard" element={<AdminDashboardOverview />} />
+              <Route path="users" element={<AdminUsers />} />
+              <Route path="students" element={<AdminStudents />} />
+              <Route path="donations" element={<AdminDonations />} />
+              <Route path="messages" element={<MessagesPage />} />
+              <Route path="analytics" element={<AdminAnalytics />} />
+              <Route path="reports" element={<AdminReports />} />
+              <Route path="settings" element={<ProfileSettings />} />
+            </Route>
+
+            {/* Fallback */}
+            <Route path="*" element={<Navigate to="/" replace />} />
