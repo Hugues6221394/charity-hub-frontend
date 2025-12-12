@@ -14,12 +14,12 @@ console.log("API URL = ", API_BASE_URL);
 
 export const BACKEND_BASE_URL = API_BASE_URL;
 
-const api = axios.create({
-  baseURL: API_BASE_URL,
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
+//const api = axios.create({
+  //baseURL: API_BASE_URL,
+  //headers: {
+    //"Content-Type": "application/json",
+  //},
+//});
 
 // Request interceptor to add auth token
 api.interceptors.request.use(
