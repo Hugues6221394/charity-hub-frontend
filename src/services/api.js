@@ -1,5 +1,14 @@
 import axios from "axios";
 
+const baseURL =
+  import.meta.env.VITE_API_BASE_URL ||
+  'https://charity-hub-backend.onrender.com';
+
+export const api = axios.create({
+  baseURL,
+  withCredentials: true,
+});
+
 const API_BASE_URL = import.meta.env.VITE_API_URL;
 console.log("API URL = ", API_BASE_URL);
 
